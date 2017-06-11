@@ -21,6 +21,7 @@ angular.module("series").controller("seriesController",function($scope, $http, s
 
       });
     };
+
     $scope.watchedList = [];
     $scope.assistidos = function(filme){
       listAPI.watchedList.push(filme, $scope.watchedList);

@@ -27,7 +27,7 @@
             <input class="form-control" type="text" ng-model="nome"  placeholder="digite o nome da serie" style="width:300px" />
             <button class="btn btn-info" ng-click="getNome(nome)">Pesquisar</button>
             <h3 class="row"></h3>
-                  <div class="rows">
+                  <div class="rows" ng-if="series.length > 0">
                       <div ng-repeat="promise in series">
                         <div ng-repeat="x in promise">
                           <div ng-if="x != 'N/A'">
@@ -58,7 +58,7 @@
                 </div>
               </div>
             </div>
-            <h3 ng-if="watchList.length == 0"> Você ainda não adicionou nenhum filme! :)</h3>
+            <h3 ng-if="watchList.length == 0"> Você ainda não adicionou nenhum filme! :) </h3>
             </div>
           </div>
           <div id="assistido" class="tab-pane fade">
