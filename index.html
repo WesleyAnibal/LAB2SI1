@@ -1,0 +1,73 @@
+<html ng-app="series">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <link rel="stylesheet" href="css/padrao.css"/>
+    <title>LAB 2 SI 1</title>
+    <script src="angular/angular.js"></script>
+    <script src="seriesController.js"></script>
+    <script src="seriesService.js"></script>
+    <script src="listService.js"></script>
+    <script src="jquery-3.2.1.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+
+    </script>
+  </head>
+  <body ng-controller="seriesController" >
+    <div class="col-md-3">
+      <ul class="nav nav-pills nav-stacked">
+        <li class="active"><a data-toggle="pill" href="#home">Pesquisar</a></li>
+        <li><a data-toggle="pill" href="#assistir">Quero assistir</a></li>
+        <li><a data-toggle="pill" href="#assistido">Assistidos</a></li>
+      </ul>
+  </div>
+      <div class="tab-content">
+        <div id="home" class="tab-pane fade in active col-sm-6 ">
+            <h1>Pesquisar os filmes</h1>
+            <input class="form-control" type="text" ng-model="nome"  placeholder="digite o nome da serie" style="width:300px" />
+            <button class="btn btn-info" ng-click="getNome(nome)">Pesquisar</button>
+            <h3 class="row"></h3>
+                  <div class="rows">
+                      <div ng-repeat="promise in series">
+                        <div ng-repeat="x in promise">
+                          <div ng-if="x != 'N/A'">
+                            <div ng-if="x.Poster != 'N/A'">
+                              <img class="serie grow" align="top-left" src="{{x.Poster}}"   ng-click="queroAssistir(x.imdbID)" ></img>
+                            </div>
+                            <div ng-if="x.Poster == 'N/A'">
+                              <img class="serie grow" align="top-left" src="noimage.jpg"   ng-click="queroAssistir(x.imdbID)" ></img>
+                            </div>
+                          </div>
+                          <div ng-if="x == 'N/A'">
+                            <h3>Serie não encontrada :(</h3>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+          </div>
+          <div id="assistir" class="tab-pane fade">
+            <div class="col-md-3">
+              <h1>Séries Assistidas</h1>
+              <div class="row" ng-repeat="promise in watchList">
+                <div ng-if="promise.Poster != 'N/A'">
+                  <img class="threed" src="{{promise.Poster}}" width="150px" height="150px" ng-click="getEps()"></img>
+                </div>
+                <div ng-if="promise.Poster == 'N/A'">
+                  <img class="threed" src="noimage.jpg" width="150px" height="150px" ng-click="getEps()"></img>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="assistido" class="tab-pane fade">
+            <div class="col-md-3">
+              <h1>Séries</h1>
+              <div class="row" ng-repeat="promise in watchedList">
+                  <h3 ng-bind="promise.Plot"></h3>
+
+                  <img src="{{promise.Poster}}" width="150px" height="150px" ng-click="getEps()"></img>
+              </div>
+            </div>
+          </div>
+        </div>
+  </body>
+</html>
