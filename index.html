@@ -48,6 +48,7 @@
           <div id="assistir" class="tab-pane fade">
             <div class="col-md-3">
               <h1>Séries Assistidas</h1>
+              <div ng-if="watchList.length > 0">
               <div class="row" ng-repeat="promise in watchList">
                 <div ng-if="promise.Poster != 'N/A'">
                   <img class="threed" src="{{promise.Poster}}" width="150px" height="150px" ng-click="getEps()"></img>
@@ -56,6 +57,8 @@
                   <img class="threed" src="noimage.jpg" width="150px" height="150px" ng-click="getEps()"></img>
                 </div>
               </div>
+            </div>
+            <h3 ng-if="watchList.length == 0"> Você ainda não adicionou nenhum filme! :)</h3>
             </div>
           </div>
           <div id="assistido" class="tab-pane fade">
