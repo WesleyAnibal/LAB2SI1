@@ -5,9 +5,10 @@
     <link rel="stylesheet" href="css/padrao.css"/>
     <title>LAB 2 SI 1</title>
     <script src="angular/angular.js"></script>
-    <script src="seriesController.js"></script>
-    <script src="seriesService.js"></script>
-    <script src="listService.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controllers/seriesController.js"></script>
+    <script src="js/service/seriesService.js"></script>
+    <script src="js/service/listService.js"></script>
     <script src="jquery-3.2.1.min.js"></script>
     <script src="bootstrap.min.js"></script>
 
@@ -18,24 +19,40 @@
       <ul class="nav nav-pills nav-stacked">
         <li class="active"><a data-toggle="pill" href="#home">Pesquisar</a></li>
         <li><a data-toggle="pill" href="#assistir">Quero assistir</a></li>
-        <li><a data-toggle="pill" href="#assistido">Assistidos</a></li>
+        <li><a data-toggle="pill" href="#assistido">Minhas Séries</a></li>
       </ul>
   </div>
       <div class="tab-content">
-        <div id="home" class="tab-pane fade in active col-sm-6 ">
+        <div id="home" class="tab-pane fade in active col-sm-6">
             <h1>Pesquisar os filmes</h1>
             <input class="form-control" type="text" ng-model="nome"  placeholder="digite o nome da serie" style="width:300px" />
             <button class="btn btn-info" ng-click="getNome(nome)">Pesquisar</button>
-            <h3 class="row"></h3>
-                  <div class="rows" ng-if="series.length > 0">
-                      <div ng-repeat="promise in series">
+            <h3></h3>
+                  <div ng-if="series.length > 0">
+                      <div ng-repeat="promise in series" ng-init="parentIndex=$index">
                         <div ng-repeat="x in promise">
-                          <div ng-if="x != 'N/A'">
-                            <div ng-if="x.Poster != 'N/A'">
-                              <img class="serie grow" align="top-left" src="{{x.Poster}}"   ng-click="queroAssistir(x.imdbID)" ></img>
+                          <div ng-if="x != 'N/A'" ng-init="childremIndex=$parent.$index">
+                            <div ng-if="x.Poster != 'N/A'" >
+                              <img class="thumbnail grow serie" align="top-left" src="{{x.Poster}}" data-toggle="modal" data-target="#myModal{{childremIndex + 5 * parentIndex}}"></img>
                             </div>
                             <div ng-if="x.Poster == 'N/A'">
-                              <img class="serie grow" align="top-left" src="noimage.jpg"   ng-click="queroAssistir(x.imdbID)" ></img>
+                              <img class="thumbnail grow serie" align="top-left" src="noimage.jpg" data-toggle="modal" data-target="#myModal{{childremIndex + 5 * parentIndex}}"></img>
+                            </div>
+                            <div id="myModal{{childremIndex + 5 * parentIndex}}" class="modal fade">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h4 class="modal-title">{{x.Title}}</h4>
+                                    <img  class="image" src="{{x.Poster}}"></img>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-Success" style="vertical-align:middle" name="button" ng-click="assistidos(x.imdbID)">Adicionar as minhas séries</button>
+                                    <button type="button" class="btn btn-Success" style="vertical-align:middle" name="button" ng-click="queroAssistir(x.imdbID)">Adicionar a WatchList</button>
+                                    <button type="button" class="btn btn-danger" style="vertical-align:middle" data-dismiss="modal">Fechar</button>
+                                  </div>
+                                </div>
+                              </div>
                             </div>
                           </div>
                           <div ng-if="x == 'N/A'">
@@ -46,28 +63,45 @@
                 </div>
           </div>
           <div id="assistir" class="tab-pane fade">
-            <div class="col-md-3">
+            <div >
               <h1>Séries Assistidas</h1>
               <div ng-if="watchList.length > 0">
-              <div class="row" ng-repeat="promise in watchList">
+              <div class="row" ng-repeat="row in showWatchList">
+                <div class="col-md-2" ng-repeat="promise in row">
                 <div ng-if="promise.Poster != 'N/A'">
-                  <img class="threed" src="{{promise.Poster}}" width="150px" height="150px" ng-click="getEps()"></img>
+                  <img class="threed" src="{{promise.Poster}}" width="150px" height="150px" data-target="#sModal{{$index}}"></img>
                 </div>
                 <div ng-if="promise.Poster == 'N/A'">
-                  <img class="threed" src="noimage.jpg" width="150px" height="150px" ng-click="getEps()"></img>
+                  <img class="threed" src="noimage.jpg" width="150px" height="150px" data-target="#sModal{{$index}}"></img>
+                </div>
+                <div id="sModal{{$index}}" class="modal fade" role="dialog">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title col-sm-5">{{promise.Title}}</h4>
+                        <p ng-bind="promise.Plot"></p>
+                        <img class="image" align="top-right" src="{{promise.Poster}}"></img>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" style="vertical-align:middle" data-dismiss="modal">Fechar</button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-            <h3 ng-if="watchList.length == 0"> Você ainda não adicionou nenhum filme! :) </h3>
+            </div>
+              <h3 ng-if="watchList.length == 0"> Você ainda não adicionou nenhum filme! :) </h3>
             </div>
           </div>
           <div id="assistido" class="tab-pane fade">
             <div class="col-md-3">
               <h1>Séries</h1>
-              <div class="row" ng-repeat="promise in watchedList">
-                  <h3 ng-bind="promise.Plot"></h3>
-
-                  <img src="{{promise.Poster}}" width="150px" height="150px" ng-click="getEps()"></img>
+              <div class="row" ng-repeat="x in showWatchedList">
+                <div ng-repeat="promise in x">
+                  <img class="threed" src="{{promise.Poster}}" width="150px" height="150px" ng-click="getEps()"></img>
+                </div>
               </div>
             </div>
           </div>

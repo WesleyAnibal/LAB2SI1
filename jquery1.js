@@ -1,1 +1,0 @@
-var tabs = $('#tabs').bootstrapDynamicTabs();
