@@ -28,7 +28,7 @@
       <div id="home" class="tab-pane fade in active col-sm-6">
           <h1>Pesquisar</h1>
           <input class="form-control" type="text" ng-model="nome"  placeholder="digite o nome da serie" style="width:300px" />
-          <button class="btn btn-info" ng-click="getNome(nome)">Pesquisar</button>
+          <button class="btn btn-primary" ng-click="getNome(nome)">Pesquisar</button>
           <h3></h3>
                 <div ng-if="series.length > 0">
                     <div ng-repeat="promise in series" ng-init="parentIndex=$index">
@@ -56,7 +56,7 @@
                                   <button type="button" class="btn btn-Success" style="vertical-align:middle" name="button" ng-click="queroAssistir(x.imdbID)">Adicionar a WatchList</button>
                                   <button type="button" class="btn btn-danger" style="vertical-align:middle" data-dismiss="modal" ng-click="alteraValor()">Fechar</button>
                                   <div class="modal-dialog" align="center" ng-if="!adicionou">
-                                    <span>Série já adicionada na watchList</span>
+                                    <span>Série já adicionada</span>
                                   </div>
                                 </div>
                               </div>

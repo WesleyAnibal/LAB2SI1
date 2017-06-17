@@ -70,10 +70,15 @@ angular.module("series").controller("seriesController",function($scope, $http, s
 
     $scope.watchedList = [];
     $scope.assistidos = function(filme){
+      $scope.adicionou = true;
       var filme = seriesAPI.getSerie(filme).then(function(resolve){
-        listAPI.adicionaWL($scope.serieTemp(resolve.data), $scope.watchedList);
-        console.log(resolve.data);
-        $scope.showWatchedList = listAPI.chunk($scope.watchedList, 5);
+        if(!contains(resolve.data, $scope.watchedList)){
+          listAPI.adicionaWL($scope.serieTemp(resolve.data), $scope.watchedList);
+          $scope.showWatchedList = listAPI.chunk($scope.watchedList, 5);
+          $scope.adicionou = true;
+        }else{
+          $scope.adicionou = false;
+        }
       },function(){});
     };
 
