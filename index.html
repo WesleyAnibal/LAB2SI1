@@ -53,11 +53,11 @@
                                 <!--opções de adicionar na watch, na watched ou fechar o modal.-->
                                 <div class="modal-footer">
                                   <button type="button" class="btn btn-Success" style="vertical-align:middle" name="button" ng-click="assistidos(x.imdbID)">Adicionar as minhas séries</button>
-                                  <div class="modal-dialog" ng-if="!adicionou">
-                                    <h4>Filme já adicionado nas suas séries</h4>
-                                  </div>
                                   <button type="button" class="btn btn-Success" style="vertical-align:middle" name="button" ng-click="queroAssistir(x.imdbID)">Adicionar a WatchList</button>
-                                  <button type="button" class="btn btn-danger" style="vertical-align:middle" data-dismiss="modal">Fechar</button>
+                                  <button type="button" class="btn btn-danger" style="vertical-align:middle" data-dismiss="modal" ng-click="alteraValor()">Fechar</button>
+                                  <div class="modal-dialog" align="center" ng-if="!adicionou">
+                                    <span>Série já adicionada na watchList</span>
+                                  </div>
                                 </div>
                               </div>
                             </div>

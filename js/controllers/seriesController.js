@@ -64,6 +64,10 @@ angular.module("series").controller("seriesController",function($scope, $http, s
       },function(){});
     };
 
+    $scope.alteraValor = function(){
+      $scope.adicionou = true;
+    }
+
     $scope.watchedList = [];
     $scope.assistidos = function(filme){
       var filme = seriesAPI.getSerie(filme).then(function(resolve){
