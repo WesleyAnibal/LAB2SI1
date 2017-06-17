@@ -55,11 +55,15 @@ angular.module("series").controller("seriesController",function($scope, $http, s
       $scope.adicionou = true;
       var filme = seriesAPI.getSerie(id).then(function(resolve){
         if(!contains(resolve.data,$scope.watchList)){
+          if(resolve.data.Poster == 'N/A'){
+            resolve.data.Poster = 'noimage.jpg';
+          }
           listAPI.adicionaWL(resolve.data, $scope.watchList);
           $scope.showWatchList = listAPI.chunk($scope.watchList, 5);
           $scope.adicionou = true;
         }else{
           $scope.adicionou = false;
+          $scope.myFunction();
         }
       },function(){});
     };
@@ -68,16 +72,25 @@ angular.module("series").controller("seriesController",function($scope, $http, s
       $scope.adicionou = true;
     }
 
+    $scope.myFunction = function() {
+      var popup = document.getElementById("myPopup");
+      popup.classList.toggle("show");
+    }
+
     $scope.watchedList = [];
     $scope.assistidos = function(filme){
       $scope.adicionou = true;
       var filme = seriesAPI.getSerie(filme).then(function(resolve){
         if(!contains(resolve.data, $scope.watchedList)){
+          if(resolve.data.Poster == 'N/A'){
+            resolve.data.Poster = 'noimage.jpg';
+          }
           listAPI.adicionaWL($scope.serieTemp(resolve.data), $scope.watchedList);
           $scope.showWatchedList = listAPI.chunk($scope.watchedList, 5);
           $scope.adicionou = true;
         }else{
           $scope.adicionou = false;
+          $scope.myFunction();
         }
       },function(){});
     };

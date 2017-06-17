@@ -82,6 +82,207 @@
         border-color: red;
 
 }
+/* efeitos de animação */
+@-webkit-keyframes listras-anim {
+from {background-position:40px 0}
+to {background-position:0 0}
+}
+@-moz-keyframes listras-anim {
+from {background-position:40px 0}
+to {background-position:0 0}
+}
+@-o-keyframes listras-anim {
+from {background-position:40px 0}
+to {background-position:0 0}
+}
+@keyframes listras-anim {
+from {background-position:40px 0}
+to {background-position:0 0}
+}
+.progresso.ativa .progresso-barra {
+	-webkit-animation: listras-anim 2s linear infinite;
+	-moz-animation: listras-anim 2s linear infinite;
+	-ms-animation: listras-anim 2s linear infinite;
+	-o-animation: listras-anim 2s linear infinite;
+	animation: listras-anim 2s linear infinite
+}
+.progresso {
+	overflow: hidden;
+	height: 15px;
+	background-color: #e7e7e7;
+	padding: 1px;
+	box-shadow: inset -1px -1px 18px #CECECE, inset 0 -1px 0 #CECECE
+}
+.progresso-barra {
+	width: 100%;
+	height: 15px;
+	background-color: #428bca;
+	-webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+	box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+	-webkit-transition: width .6s ease;
+	transition: width .6s ease
+}
+.progresso-pai .progresso-barra {
+	background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255,255,255,.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255,255,255,.15)), color-stop(0.75, rgba(255,255,255,.15)), color-stop(0.75, transparent), to(transparent));
+	background-image: -webkit-linear-gradient(45deg, rgba(255,255,255,.15)25%, transparent 25%, transparent 50%, rgba(255,255,255,.15)50%, rgba(255,255,255,.15)75%, transparent 75%, transparent);
+	background-image: -moz-linear-gradient(45deg, rgba(255,255,255,.15)25%, transparent 25%, transparent 50%, rgba(255,255,255,.15)50%, rgba(255,255,255,.15)75%, transparent 75%, transparent);
+	background-image: linear-gradient(45deg, rgba(255,255,255,.15)25%, transparent 25%, transparent 50%, rgba(255,255,255,.15)50%, rgba(255,255,255,.15)75%, transparent 75%, transparent);
+	background-size: 40px 40px
+}
+.progresso-pai .progresso-barra, .progresso-pai .progresso-barra-7 {
+	background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255,255,255,.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255,255,255,.15)), color-stop(0.75, rgba(255,255,255,.15)), color-stop(0.75, transparent), to(transparent));
+	background-image: -webkit-linear-gradient(45deg, rgba(255,255,255,.15)25%, transparent 25%, transparent 50%, rgba(255,255,255,.15)50%, rgba(255,255,255,.15)75%, transparent 75%, transparent);
+	background-image: -moz-linear-gradient(45deg, rgba(255,255,255,.15)25%, transparent 25%, transparent 50%, rgba(255,255,255,.15)50%, rgba(255,255,255,.15)75%, transparent 75%, transparent);
+	background-image: linear-gradient(45deg, rgba(255,255,255,.15)25%, transparent 25%, transparent 50%, rgba(255,255,255,.15)50%, rgba(255,255,255,.15)75%, transparent 75%, transparent);
+	background-size: 40px 40px
+}
+.progresso.ativa .progresso-barra, .progresso.ativa .progresso-barra-7 {
+	-webkit-animation: listras-anim 2s linear infinite;
+	-moz-animation: listras-anim 2s linear infinite;
+	-ms-animation: listras-anim 2s linear infinite;
+	-o-animation: listras-anim 2s linear infinite;
+	animation: listras-anim 2s linear infinite
+}
+.progresso-pai .progresso-barra, .progresso-pai .progresso-barra-8 {
+	background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255,255,255,.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255,255,255,.15)), color-stop(0.75, rgba(255,255,255,.15)), color-stop(0.75, transparent), to(transparent));
+	background-image: -webkit-linear-gradient(45deg, rgba(255,255,255,.15)25%, transparent 25%, transparent 50%, rgba(255,255,255,.15)50%, rgba(255,255,255,.15)75%, transparent 75%, transparent);
+	background-image: -moz-linear-gradient(45deg, rgba(255,255,255,.15)25%, transparent 25%, transparent 50%, rgba(255,255,255,.15)50%, rgba(255,255,255,.15)75%, transparent 75%, transparent);
+	background-image: linear-gradient(45deg, rgba(255,255,255,.15)25%, transparent 25%, transparent 50%, rgba(255,255,255,.15)50%, rgba(255,255,255,.15)75%, transparent 75%, transparent);
+	background-size: 40px 40px
+}
+.progresso.ativa .progresso-barra, .progresso.ativa .progresso-barra-8 {
+	-webkit-animation: listras-anim 2s linear infinite;
+	-moz-animation: listras-anim 2s linear infinite;
+	-ms-animation: listras-anim 2s linear infinite;
+	-o-animation: listras-anim 2s linear infinite;
+	animation: listras-anim 2s linear infinite
+}.progresso-pai .progresso-barra, .progresso-pai .progresso-barra-9 {
+	background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255,255,255,.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255,255,255,.15)), color-stop(0.75, rgba(255,255,255,.15)), color-stop(0.75, transparent), to(transparent));
+	background-image: -webkit-linear-gradient(45deg, rgba(255,255,255,.15)25%, transparent 25%, transparent 50%, rgba(255,255,255,.15)50%, rgba(255,255,255,.15)75%, transparent 75%, transparent);
+	background-image: -moz-linear-gradient(45deg, rgba(255,255,255,.15)25%, transparent 25%, transparent 50%, rgba(255,255,255,.15)50%, rgba(255,255,255,.15)75%, transparent 75%, transparent);
+	background-image: linear-gradient(45deg, rgba(255,255,255,.15)25%, transparent 25%, transparent 50%, rgba(255,255,255,.15)50%, rgba(255,255,255,.15)75%, transparent 75%, transparent);
+	background-size: 40px 40px
+}
+.progresso.ativa .progresso-barra, .progresso.ativa .progresso-barra-9 {
+	-webkit-animation: listras-anim 2s linear infinite;
+	-moz-animation: listras-anim 2s linear infinite;
+	-ms-animation: listras-anim 2s linear infinite;
+	-o-animation: listras-anim 2s linear infinite;
+	animation: listras-anim 2s linear infinite
+}
+.progresso-pai .progresso-barra, .progresso-pai .progresso-barra-10 {
+	background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255,255,255,.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255,255,255,.15)), color-stop(0.75, rgba(255,255,255,.15)), color-stop(0.75, transparent), to(transparent));
+	background-image: -webkit-linear-gradient(45deg, rgba(255,255,255,.15)25%, transparent 25%, transparent 50%, rgba(255,255,255,.15)50%, rgba(255,255,255,.15)75%, transparent 75%, transparent);
+	background-image: -moz-linear-gradient(45deg, rgba(255,255,255,.15)25%, transparent 25%, transparent 50%, rgba(255,255,255,.15)50%, rgba(255,255,255,.15)75%, transparent 75%, transparent);
+	background-image: linear-gradient(45deg, rgba(255,255,255,.15)25%, transparent 25%, transparent 50%, rgba(255,255,255,.15)50%, rgba(255,255,255,.15)75%, transparent 75%, transparent);
+	background-size: 40px 40px
+}
+.progresso.ativa .progresso-barra, .progresso.ativa .progresso-barra-10 {
+	-webkit-animation: listras-anim 2s linear infinite;
+	-moz-animation: listras-anim 2s linear infinite;
+	-ms-animation: listras-anim 2s linear infinite;
+	-o-animation: listras-anim 2s linear infinite;
+	animation: listras-anim 2s linear infinite
+}
+.progresso-barra-0 {
+	width: 0%;
+	height: 15px;
+	background-color:#EAB5B5;
+	-webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+	box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+	-webkit-transition: width .6s ease;
+	transition: width .6s ease
+}
+.progresso-barra-1 {
+	width: 10%;
+	height: 15px;
+	background-color:#EA9090;
+	-webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+	box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+	-webkit-transition: width .6s ease;
+	transition: width .6s ease
+}
+.progresso-barra-2 {
+	width: 20%;
+	height: 15px;
+	background-color:#E56161;
+	-webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+	box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+	-webkit-transition: width .6s ease;
+	transition: width .6s ease
+}
+.progresso-barra-3 {
+	width: 30%;
+	height: 15px;
+	background-color:#E04040;
+	-webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+	box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+	-webkit-transition: width .6s ease;
+	transition: width .6s ease
+}
+.progresso-barra-4 {
+	width: 40%;
+	height: 15px;
+	background-color:#E12727;
+	-webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+	box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+	-webkit-transition: width .6s ease;
+	transition: width .6s ease
+}
+.progresso-barra-5 {
+	width: 50%;
+	height: 15px;
+	background-color:#D51010;
+	-webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+	box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+	-webkit-transition: width .6s ease;
+	transition: width .6s ease
+}
+.progresso-barra-6 {
+	width: 60%;
+	height: 15px;
+	background-color:#EE0A0A;
+	-webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+	box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+	-webkit-transition: width .6s ease;
+	transition: width .6s ease
+}
+.progresso-barra-7 {
+	width: 70%;
+	height: 15px;
+	background-color:#F70808;
+	-webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+	box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+	-webkit-transition: width .6s ease;
+	transition: width .6s ease
+}
+.progresso-barra-8 {
+	width: 80%;
+	height: 15px;
+	background-color:#F70848;
+	-webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+	box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+	-webkit-transition: width .6s ease;
+	transition: width .6s ease
+}
+.progresso-barra-9 {
+	width: 90%;
+	height: 15px;
+	background-color:#07AE2E;
+	-webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+	box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+	-webkit-transition: width .6s ease;
+	transition: width .6s ease
+}
+.progresso-barra-10 {
+	width: 100%;
+	height: 15px;
+	background-color:#F1E900;
+	-webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+	box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+	-webkit-transition: width .6s ease;
+	transition: width .6s ease
+}
 
 #texto{
   position: absolute;

@@ -47,7 +47,12 @@
                               <div class="modal-content">
                                 <div class="modal-header">
                                   <h4 class="modal-title">{{x.Title}}</h4>
-                                  <img  class="image" src="{{x.Poster}}"></img>
+                                  <div ng-if="x.Poster != 'N/A'" >
+                                    <img  class="image" src="{{x.Poster}}"></img>
+                                  </div>
+                                  <div ng-if="x.Poster == 'N/A'">
+                                    <img class="image" src="noimage.jpg"></img>
+                                  </div>
                                   <button type="button" class="close" data-dismiss="modal">&times;</button>
                                 </div>
                                 <!--opções de adicionar na watch, na watched ou fechar o modal.-->
@@ -127,6 +132,10 @@
                           <div class="modal-header">
                             <h2 class="modal-title">{{promise.Title}}</h4>
                             <img class="image" align="top-right" src="{{promise.Poster}}"></img>
+                            <input type="text" ng-model="nota">
+                            <div class="progresso progresso-pai ativa">
+                            	<div class="progresso-barra-{{nota}}"></div>
+                            </div>
                             <select class="form-control" ng-model="temporada" style="width:300px" ng-options="temp.num for temp in promise.temporadas">
                                 <option value="">Digite a temporada da série</option>
                             </select>
