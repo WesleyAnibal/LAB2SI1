@@ -117,13 +117,13 @@
         </div>
         <!--Exibir as séries que está assistindo-->
         <div id="assistido" class="tab-pane fade">
-          <div class="col-md-3">
+          <div class="col-sm-6">
             <h1>Séries</h1>
               <!--caso já tenha adicionado alguma série-->
               <div ng-if="watchedList.length > 0">
                 <div class="row" ng-repeat="x in showWatchedList" ng-init="childrem=$index">
                   <div ng-repeat="promise in x" ng-init="parent=$index">
-                    <img class="threed" src="{{promise.Poster}}" width="150px" height="150px" data-toggle="modal" data-target="#miModal{{childrem + 5 * parent}}"></img>
+                    <img class="thumbnail grow" src="{{promise.Poster}}" width="150px" height="150px" data-toggle="modal" data-target="#miModal{{childrem + 5 * parent}}"></img>
                     <div id="miModal{{childrem + 5 * parent}}" class="modal fade">
                       <div class="modal-dialog">
                         <div class="modal-content">
@@ -132,7 +132,7 @@
                           <div class="modal-header">
                             <h2 class="modal-title">{{promise.Title}}</h4>
                             <img class="image" align="top-right" src="{{promise.Poster}}"></img>
-                            <input type="text" ng-model="nota">
+                            <input type="text" ng-model="nota" placeholder="nota para a série">
                             <div class="progresso progresso-pai ativa">
                             	<div class="progresso-barra-{{nota}}"></div>
                             </div>
