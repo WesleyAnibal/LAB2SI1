@@ -17,12 +17,54 @@ angular.module("series").controller("seriesController",function($scope, $http, s
         });
     }
 
+    $scope.funcao1 = function(serie) {
+      var x;
+      var r=confirm("Deseja realmente apagar a série?");
+      if (r==true){
+        $scope.removeSerieWatched(serie);
+      }
+    }
+    $scope.funcao2 = function(serie) {
+      var x;
+      var r=confirm("Deseja realmente apagar a série?");
+      if (r==true){
+        $scope.removeSerieWatch(serie);
+      }
+    }
+
+    $scope.subString = function(nota){
+      var posi = nota.indexOf(".");
+      if(posi != -1){
+        return nota.substring(0,posi);
+      }return nota;
+    }
+
     function contains(serie, lista) {
         for (var i = 0; i < lista.length; i++) {
           if(lista[i].imdbID == serie.imdbID){
             return true;
           }
         }return false;
+    }
+
+    $scope.removeSerieWatched = function(serie){
+      var posicao = $scope.watchedList.indexOf(serie);
+      $scope.watchedList.splice(posicao,1);
+      $scope.showWatchedList = listAPI.chunk($scope.watchedList, 5);
+    }
+    $scope.removeSerieWatch = function(serie){
+      var posicao = $scope.watchList.indexOf(serie);
+      $scope.watchList.splice(posicao,1);
+      $scope.showWatchList = listAPI.chunk($scope.watchList, 5);
+    }
+
+    $scope.stringEps = function(array){
+      var saida = "";
+      array = array.sort();
+      for (var i = 0; i < array.length; i++) {
+        saida+=array[i]+", ";
+      }
+      return saida;
     }
 
     $scope.serieTemp = function(serie){
@@ -46,8 +88,14 @@ angular.module("series").controller("seriesController",function($scope, $http, s
           temporadas.push(temp);
         }
         serie.temporadas = temporadas;
+        serie.nota = "0.0";
+        console.log(serie);
         return serie;
     };
+
+    $scope.adicionarNota = function(serie, nota){
+      serie.nota = nota;
+    }
 
     $scope.watchList = [];
     $scope.adicionou = true;

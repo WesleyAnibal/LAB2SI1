@@ -15,17 +15,17 @@
 
   <body ng-controller="seriesController">
     <!--controle de abas, entre a home que contém a pesquisa, as séries que quero assistir e as que estou assistindo-->
-    <div class="col-md-3">
-      <ul class="nav nav-pills nav-stacked">
+    <div class="col-md-3" style="background-color: #212121; height: 100%; position: fixed; width: 20%">
+      <ul class="nav nav-pills nav-stacked" style="margin-top: 10%">
         <li class="active"><a data-toggle="pill" href="#home">Pesquisar</a></li>
         <li><a data-toggle="pill" href="#assistir">Quero assistir</a></li>
         <li><a data-toggle="pill" href="#assistido">Minhas Séries</a></li>
       </ul>
     </div>
     <!--valores de cada aba-->
-    <div class="tab-content">
+    <div class="tab-content col-md-9" style="position: relative; width: 80%; margin-left: 20%">
       <!--pesquisa de filmes-->
-      <div id="home" class="tab-pane fade in active col-sm-6">
+      <div id="home" class="tab-pane fade in active col-sm-9;">
           <h1>Pesquisar</h1>
           <input class="form-control" type="text" ng-model="nome"  placeholder="digite o nome da serie" style="width:300px" />
           <button class="btn btn-primary" ng-click="getNome(nome)">Pesquisar</button>
@@ -104,7 +104,9 @@
                           <p ng-bind="promise.Plot"></p>
                         </div>
                         <div class="modal-footer">
+                          <button type="button" class="btn btn-primary" ng-click="assistidos(promise.imdbID)">Adicionar ao seu perfil</button>
                           <button type="button" class="btn btn-danger" style="vertical-align:middle" data-dismiss="modal">Fechar</button>
+                          <button type="button" class="btn btn-danger" ng-click="funcao2(promise)" data-dismiss="modal">Deletar Série</button>
                         </div>
                       </div>
                     </div>
@@ -130,24 +132,59 @@
                           <!--exibe a opção de colocar uma nota, adicionar o último ep assistido-->
                           <button type="button" class="close" align="top-right" data-dismiss="modal">&times;</button>
                           <div class="modal-header">
-                            <h2 class="modal-title">{{promise.Title}}</h4>
-                            <img class="image" align="top-right" src="{{promise.Poster}}"></img>
-                            <input type="text" ng-model="nota" placeholder="nota para a série">
-                            <div class="progresso progresso-pai ativa">
-                            	<div class="progresso-barra-{{nota}}"></div>
+                            <h2 class="modal-title" style="margin-left: 200px">{{promise.Title}}</h4>
+                            <div class="col-md-4" style="width:50%">
+                                <img class="image" align="top-right" src="{{promise.Poster}}"></img>
                             </div>
-                            <select class="form-control" ng-model="temporada" style="width:300px" ng-options="temp.num for temp in promise.temporadas">
-                                <option value="">Digite a temporada da série</option>
-                            </select>
-                            <input class="form-control" type="button reset" ng-model="episodio"  placeholder="digite o número do episódio assistido" style="width:300px" onfocus="this.value='';" />
-                            <button class="btn btn-primary" type="button" name="button" ng-click="temporada.episodios.push(episodio)">Adicionar Episódio</button>
-                            <h4>{{temporada}}</h4>
+                            <div class="col-md-5" style="position: relative; width: 20%; margin-left: 5%">
+                              <div class="thumbnail" style="width: 250px; height: 80px;" >
+                                <div class="progresso progresso-pai ativa" style="width:230px">
+                                	<div class="progresso-barra-{{subString(promise.nota)}}"></div>
+                                </div>
+                                <input type="text" ng-model="nota" placeholder="nota para a série">
+                                <button class="btn btn-primary" type="button" ng-click="adicionarNota(promise,nota)">Enviar</button>
+                              </div>
+                              <div class="thumbnail" style="width: 250px; height: 110px;">
+                                <select class="form-control" ng-model="temporada" style="width:230px" ng-options="temp.num for temp in promise.temporadas">
+                                    <option value="">Temporadas</option>
+                                </select>
+                                <input class="form-control" type="button reset" ng-model="episodio"  placeholder="Episódio assistido" style="width:230px" onfocus="this.value='';" />
+                                <button class="btn btn-primary" type="button" name="button" ng-click="temporada.episodios.push(episodio)">Adicionar Episódio</button>
+                              </div>
+                              <div class="thumbnail" style="width: 250px; height: 210px; margin-top: 5px">
+                                <div class="col-md-1">
+                                  <img class="logos" src="imdb.png"/>
+                                  <h5 ng-bind="promise.imdbRating" style="margin-left: 10px"></h5>
+                                </div>
+                                <div class="col-md-1" style="margin-left: 50px; margin-bottom:10px">
+                                  <img class="logos" src="family.png"/>
+                                  <h5 ng-bind="promise.Rated" style="margin-left: 50px;"></h5>
+                                </div>
+                                <div class="col-md-1" style="margin-left: 50px;">
+                                  <img class="logos" src="score.png"/>
+                                  <h5 ng-bind="promise.nota" style="margin-left: 50px;"></h5>
+                                </div>
+                                <div class="col-md-7" >
+                                  <h4 style="margin-left: 20%">Assistido</h4>
+                                  <div class="">
+                                      <h5>Temp</h5>
+                                      <h5 style="margin-top:-25px; margin-left: 80px">Eps</h5>
+                                  </div>
+                                  <div style="margin-left: 10%" ng-repeat="temporadas in promise.temporadas">
+                                    <div>
+                                      <h6>{{$index+1}} - &emsp;&emsp;&emsp; {{stringEps(temporadas.episodios)}}</h6>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
                           </div>
                           <div class="modal-body">
                             <p ng-bind="promise.Plot"></p>
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-danger" style="vertical-align:middle" data-dismiss="modal">Fechar</button>
+                            <button type="button" class="btn btn-danger" ng-click="funcao1(promise)" data-dismiss="modal">Deletar Série</button>
                           </div>
                         </div>
                       </div>
