@@ -107,6 +107,9 @@
                           <button type="button" class="btn btn-primary" ng-click="assistidos(promise.imdbID)">Adicionar ao seu perfil</button>
                           <button type="button" class="btn btn-danger" style="vertical-align:middle" data-dismiss="modal">Fechar</button>
                           <button type="button" class="btn btn-danger" ng-click="funcao2(promise)" data-dismiss="modal">Deletar Série</button>
+                          <div class="modal-dialog" align="center" ng-if="!adicionou">
+                            <span>Série já adicionada</span>
+                          </div>
                         </div>
                       </div>
                     </div>
